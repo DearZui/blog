@@ -7,6 +7,7 @@
 
 大家都是人，不要做一个死板不近人情的面试官哦。
 
+---
 #### 什么是error-first的回调方式
 
 Error-first回调方式用来同时传递error和data。将错误作为第一个参数，它就必须先检查看看有没有错误先。另外的参数就用来传递data了。
@@ -22,6 +23,7 @@ fs.readFile(filePath, function(err, data) {
 })
 ```
 
+---
 #### 你是如何避免回调地狱的?
 
 - **模块化** 把回调函数分割成独立的函数
@@ -29,6 +31,7 @@ fs.readFile(filePath, function(err, data) {
 - **generators结合Promise**
 - **async/await**
 
+---
 #### Promise是什么?
 
 概念不多说了，简单来说就是帮助你更好地处理异步操作的东西。
@@ -43,6 +46,7 @@ new Promise((resolve, reject) => {
   .catch(console.error)
 ```
 
+---
 #### stub是什么? 举个例子?
 
 stub是用来模拟组件/模块行为的东西，它在测试阶段为函数调用提供内部响应。
@@ -60,6 +64,7 @@ expect(writeFileStub).to.be.called
 writeFileStub.restore();
 ```
 
+---
 #### 如何保证你的HTTP cookies安全不受XSS攻击
 
 在`set-cookie`HTTP头部加上这几个信息：
@@ -69,6 +74,7 @@ writeFileStub.restore();
 
 像这样：`Set-Cookit: sid=<cookit-value>; HttpOnly`
 
+---
 #### 下面这段代码有什么问题
 ```
 new Promise((resolve, reject) => {
@@ -94,6 +100,7 @@ process.on('unhandledRejection', (err) => {
 })
 ```
 
+---
 #### 下面的代码有什么问题?
 
 ```
@@ -121,6 +128,7 @@ function checkApiKey(apiKeyFromDb, apiKeyReceived) {
 
 某乎上有个解释地挺好的[如何通俗地解释时序攻击(timing attack)?](https://www.zhihu.com/question/20156213/answer/43377769)
 
+---
 #### 下面的代码会输出什么
 
 ```
