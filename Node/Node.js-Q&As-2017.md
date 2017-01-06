@@ -24,3 +24,38 @@ fs.readFile(filePath, function(err, data) {
 
 #### 你是如何避免回调地狱的?
 
+- **模块化** 把回调函数分割成独立的函数
+- 使用**控制流的库**，比如[async](https://www.npmjs.com/package/async)
+- **generators结合Promise**
+- **async/await**
+
+#### Promise是什么?
+
+概念不多说了，简单来说就是帮助你更好地处理异步操作的东西。
+
+```
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('result');
+  }, 100)
+})
+  .then(console.log)
+  .catch(console.error)
+```
+
+#### stub是什么? 举个例子?
+
+stub是用来模拟组件/模块行为的东西，它在测试阶段为函数调用提供内部响应。
+
+例子是写文件，但实际上并没有这么做
+
+```
+var fs = require('fs');
+
+var writeFileStub = sinon.stub(fs, 'writeFile', function(path, data, cb) {
+  return cb(null)
+})
+
+expect(writeFileStub).to.be.called
+writeFileStub.restore();
+```
